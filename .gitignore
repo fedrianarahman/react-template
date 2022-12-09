@@ -19,8 +19,8 @@ yarn.lock
 .env.development.local
 .env.test.local
 .env.production.local
-./scr/ApiService/ApiService.json
-./scr/ApiService/config.json
+./src/ApiService/ApiService.json
+./src/ApiService/config.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
