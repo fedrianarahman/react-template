@@ -11,7 +11,7 @@ yarn.lock
 # production
 /build
 
-# misc
+# miscgit 
 .eslintcache
 .DS_Store
 .idea
