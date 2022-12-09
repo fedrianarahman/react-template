@@ -1,7 +1,10 @@
+import { cibWindows } from '@coreui/icons'
 import { createStore } from 'redux'
 
 const initialState = {
   sidebarShow: true,
+  token : window.localStorage.getItem("token"),
+  
 }
 
 const changeState = (state = initialState, { type, ...rest }) => {
@@ -13,5 +16,6 @@ const changeState = (state = initialState, { type, ...rest }) => {
   }
 }
 
+console.log("line 19 store", initialState.token)
 const store = createStore(changeState)
 export default store
