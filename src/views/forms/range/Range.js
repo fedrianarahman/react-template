@@ -1,7 +1,7 @@
 import React from 'react'
 import { CCard, CCardBody, CCardHeader, CCol, CFormLabel, CFormRange, CRow } from '@coreui/react'
-import { DocsExample } from 'src/components'
-
+// import { DocsExample } from 'src/components'
+import { DocsExample } from '../../../components'
 const Range = () => {
   return (
     <CRow>

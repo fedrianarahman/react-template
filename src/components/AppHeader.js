@@ -16,8 +16,8 @@ import { cilBell, cilEnvelopeOpen, cilList, cilMenu } from '@coreui/icons'
 
 import { AppBreadcrumb } from './index'
 import { AppHeaderDropdown } from './header/index'
-import { logo } from 'src/assets/brand/logo'
-
+// import { logo } from 'src/assets/brand/logo'
+import { logo } from '../assets/brand/logo'
 const AppHeader = () => {
   const dispatch = useDispatch()
   const sidebarShow = useSelector((state) => state.sidebarShow)
@@ -40,12 +40,12 @@ const AppHeader = () => {
               Dashboard
             </CNavLink>
           </CNavItem>
-          <CNavItem>
+          {/* <CNavItem>
             <CNavLink href="#">Users</CNavLink>
-          </CNavItem>
-          <CNavItem>
+          </CNavItem> */}
+          {/* <CNavItem>
             <CNavLink href="#">Settings</CNavLink>
-          </CNavItem>
+          </CNavItem> */}
         </CHeaderNav>
         <CHeaderNav>
           <CNavItem>

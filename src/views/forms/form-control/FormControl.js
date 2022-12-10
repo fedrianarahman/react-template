@@ -11,8 +11,8 @@ import {
   CFormTextarea,
   CRow,
 } from '@coreui/react'
-import { DocsExample } from 'src/components'
-
+// import { DocsExample } from 'src/components'
+import { DocsExample } from '../../../components'
 const FormControl = () => {
   return (
     <CRow>

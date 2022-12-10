@@ -12,6 +12,9 @@ import {
   cilPuzzle,
   cilSpeedometer,
   cilStar,
+  cilLayers,
+  cilAudio,
+  cilSettings
 } from '@coreui/icons'
 import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
 
@@ -20,37 +23,57 @@ const _nav = [
     component: CNavItem,
     name: 'Dashboard',
     to: '/dashboard',
-    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+    icon: <CIcon icon={cilLayers} customClassName="nav-icon" />,
     badge: {
       color: 'info',
-      text: 'NEW',
+      // text: 'NEW',
     },
   },
   {
-    component: CNavTitle,
-    name: 'Theme',
+    component: CNavItem,
+    name: 'Wa Blaste',
+    to: '/dashboard',
+    icon: <CIcon icon={cilAudio} customClassName="nav-icon" />,
+    badge: {
+      color: 'info',
+      // text: 'NEW',
+    },
   },
   {
     component: CNavItem,
-    name: 'Colors',
-    to: '/theme/colors',
-    icon: <CIcon icon={cilDrop} customClassName="nav-icon" />,
+    name: 'Set up',
+    to: '/dashboard',
+    icon: <CIcon icon={cilSettings} customClassName="nav-icon" />,
+    badge: {
+      color: 'info',
+      // text: 'NEW',
+    },
   },
-  {
-    component: CNavItem,
-    name: 'Typography',
-    to: '/theme/typography',
-    icon: <CIcon icon={cilPencil} customClassName="nav-icon" />,
-  },
-  {
-    component: CNavTitle,
-    name: 'Components',
-  },
+  // {
+  //   component: CNavTitle,
+  //   name: 'Theme',
+  // },
+  // {
+  //   component: CNavItem,
+  //   name: 'Colors',
+  //   to: '/theme/colors',
+  //   icon: <CIcon icon={cilDrop} customClassName="nav-icon" />,
+  // },
+  // {
+  //   component: CNavItem,
+  //   name: 'Typography',
+  //   to: '/theme/typography',
+  //   icon: <CIcon icon={cilPencil} customClassName="nav-icon" />,
+  // },
+  // {
+  //   component: CNavTitle,
+  //   name: 'Components',
+  // },
   {
     component: CNavGroup,
-    name: 'Base',
+    name: 'Dashboard',
     to: '/base',
-    icon: <CIcon icon={cilPuzzle} customClassName="nav-icon" />,
+    icon: <CIcon icon={cilLayers} customClassName="nav-icon" />,
     items: [
       {
         component: CNavItem,

@@ -16,10 +16,10 @@ import { cilArrowBottom, cilArrowTop, cilOptions } from '@coreui/icons'
 const WidgetsDropdown = () => {
   return (
     <CRow>
-      <CCol sm={6} lg={3}>
+      <CCol sm={6} lg={12}>
         <CWidgetStatsA
           className="mb-4"
-          color="primary"
+          color="success"
           value={
             <>
               26K{' '}
