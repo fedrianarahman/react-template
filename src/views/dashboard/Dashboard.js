@@ -53,7 +53,11 @@ import avatar6 from '../../assets/images/avatars/6.jpg'
 
 import WidgetsBrand from '../widgets/WidgetsBrand'
 import WidgetsDropdown from '../widgets/WidgetsDropdown'
-
+import WhatsAppInfo from './dashboardComponent/WhatsAppInfo'
+import WaMenu from './dashboardComponent/WaMenu'
+import QrCode from './dashboardComponent/QrCode'
+import RegisterUser from './dashboardComponent/RegisterUser'
+import Outbox from './dashboardComponent/Outbox'
 const Dashboard = () => {
   const random = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
 
@@ -180,8 +184,8 @@ const Dashboard = () => {
 
   return (
     <>
-      <WidgetsDropdown />
-      <CCard className="mb-4">
+      {/* <WidgetsDropdown /> */}
+      {/* <CCard className="mb-4">
         <CCardBody>
           <CRow>
             <CCol sm={5}>
@@ -306,11 +310,11 @@ const Dashboard = () => {
             ))}
           </CRow>
         </CCardFooter>
-      </CCard>
+      </CCard> */}
 
-      <WidgetsBrand withCharts />
+      {/* <WidgetsBrand withCharts /> */}
 
-      <CRow>
+      {/* <CRow>
         <CCol xs>
           <CCard className="mb-4">
             <CCardHeader>Traffic {' & '} Sales</CCardHeader>
@@ -453,6 +457,24 @@ const Dashboard = () => {
             </CCardBody>
           </CCard>
         </CCol>
+      </CRow> */}
+
+      <CRow>
+      <CCol md={3}>
+          <WhatsAppInfo/>
+          <CCol className='mt-4'>
+              <WaMenu/>
+          </CCol>
+          <CCol className='mt-4 mb-4'>
+              <QrCode/>
+          </CCol>
+      </CCol>
+      <CCol md={9}>
+          <RegisterUser/>
+          <div style={{marginTop : "30px"}}>
+              <Outbox/>
+          </div>
+      </CCol>
       </CRow>
     </>
   )
