@@ -463,14 +463,14 @@ const Dashboard = () => {
       <CCol md={3}>
           <WhatsAppInfo/>
           <CCol className='mt-4'>
-              <WaMenu/>
+              {/* <WaMenu/> */}
           </CCol>
           <CCol className='mt-4 mb-4'>
-              <QrCode/>
+              {/* <QrCode/> */}
           </CCol>
       </CCol>
       <CCol md={9}>
-          <RegisterUser/>
+          {/* <RegisterUser/> */}
           <div style={{marginTop : "30px"}}>
               <Outbox/>
           </div>

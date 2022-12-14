@@ -30,9 +30,10 @@ const AppSidebar = () => {
       onVisibleChange={(visible) => {
         dispatch({ type: 'set', sidebarShow: visible })
       }}
+      style={{background : "#FD841F"}}
     >
-      <CSidebarBrand className="d-none d-md-flex" to="/">
-        <CIcon className="sidebar-brand-full" icon={logoNegative} height={35} />
+      <CSidebarBrand className="d-none d-md-flex" style={{background : "#FD841F"}} to="/">
+        <CIcon className="sidebar-brand-full"  icon={logoNegative} height={35} />
         <CIcon className="sidebar-brand-narrow" icon={sygnet} height={35} />
       </CSidebarBrand>
       <CSidebarNav>
@@ -41,6 +42,7 @@ const AppSidebar = () => {
         </SimpleBar>
       </CSidebarNav>
       <CSidebarToggler
+      style={{background : "#FD841F"}}
         className="d-none d-lg-flex"
         onClick={() => dispatch({ type: 'set', sidebarUnfoldable: !unfoldable })}
       />

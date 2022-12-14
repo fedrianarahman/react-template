@@ -22,6 +22,7 @@ import { ApiService } from '../../../ApiService/ApiService'
 import { Alert } from '@coreui/coreui'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+const Swal = require("sweetalert2")
 const Login = () => {
 
   const dispatch = useDispatch()
@@ -52,21 +53,45 @@ const Login = () => {
     event.preventDefault();
     let phoneNumber = params.phoneNumber;
     let otp = params.otpNumber;
+    let urlLogin = `/wa/login-by-otp`;
+    let urlRequest = `/wa/request-otp`;
     if (params.otpNumber) {
-      let urlLogin = `/wa/login-by-otp`;
       let login = await ApiService.post(urlLogin, {phoneNumber, otp});
       let token = login.data.data;
       window.localStorage.setItem("token", token);
-      const origin = location.state?.from?.pathname || '/dashboard';
-      dispatch({type:"set", token })
-      navigate(origin);
+      if (login.data.status=="error") {
+        Swal.fire({
+          title: 'Error!',
+          text: `${login.data.message}`,
+          icon: 'error',
+          confirmButtonText: 'Cool'
+        });
+        event.target.reset()
+        setParams({...params, style : 'none', otpNumber : null,textBtn: 'Request OTP' })
+      }else{
+        Swal.fire(
+          `${login.data.status}`,
+          'You clicked the button!',
+          'success'
+        )
+        const origin = location.state?.from?.pathname || '/dashboard';
+        dispatch({type:"set", token })
+        navigate(origin);
+      }
     }else{
-      let urlRequest = `/wa/request-otp`;
       let requestOtp = await ApiService.post(urlRequest, {phoneNumber});
 
       if (requestOtp.data.status == "error") {
         setParams({...params, phoneNumber : '',validated : true})
           // return alert(requestOtp.data.message);
+          Swal.fire({
+            title: 'Error!',
+            text: requestOtp.data.message,
+            icon: 'error',
+            confirmButtonText: 'Cool'
+          });
+          // setParams({...params, phoneNumber : '',validated : true})
+          event.target.reset()
       } else {
         setParams({...params, style : '', textBtn : 'Log in', validated : true , valid : true})
       }
@@ -94,7 +119,7 @@ const Login = () => {
                       }} required={true} valid={params.valid}  />
                       {/* <CFormFeedback valid={true}>Looks good!</CFormFeedback> */}
                     </CInputGroup>
-                    <CInputGroup className="mb-4 " style={{ display: params.style }}>
+                    <CInputGroup className="mb-4 " style={{ display: params.style }} >
                       <CInputGroupText>
                         <CIcon icon={cilLockLocked} />
                       </CInputGroupText>
@@ -104,6 +129,13 @@ const Login = () => {
                         autoComplete="otpNumber"
                         onChange={ handleChange}
                         name='otpNumber'
+                        maxLength={4}
+                        onKeyPress={(event) => {
+                          if (!/[0-9]/.test(event.key)) {
+                            event.preventDefault();
+                          }
+                        }}
+
                       />
                     </CInputGroup>
                     <CRow>

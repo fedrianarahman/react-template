@@ -4,6 +4,7 @@ import { createStore } from 'redux'
 const initialState = {
   sidebarShow: true,
   token : window.localStorage.getItem("token"),
+  whatsAppInfo : {},
   
 }
 
@@ -16,6 +17,6 @@ const changeState = (state = initialState, { type, ...rest }) => {
   }
 }
 
-console.log("line 19 store", initialState.token)
+console.log("line 19 whatsApp info", initialState.token)
 const store = createStore(changeState)
 export default store

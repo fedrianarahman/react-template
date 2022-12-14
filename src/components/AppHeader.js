@@ -12,7 +12,7 @@ import {
   CNavItem,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import { cilBell, cilEnvelopeOpen, cilList, cilMenu } from '@coreui/icons'
+import { cilBell, cilEnvelopeOpen, cilList, cilMenu, cilDollar } from '@coreui/icons'
 
 import { AppBreadcrumb } from './index'
 import { AppHeaderDropdown } from './header/index'
@@ -21,7 +21,8 @@ import { logo } from '../assets/brand/logo'
 const AppHeader = () => {
   const dispatch = useDispatch()
   const sidebarShow = useSelector((state) => state.sidebarShow)
-
+  const whatsAppInfo = useSelector((state) => state.whatsAppInfo)
+  // console.log("line 25 apppp header", whatsAppInfo);
   return (
     <CHeader position="sticky" className="mb-4">
       <CContainer fluid>
@@ -37,7 +38,7 @@ const AppHeader = () => {
         <CHeaderNav className="d-none d-md-flex me-auto">
           <CNavItem>
             <CNavLink to="/dashboard" component={NavLink}>
-              Dashboard
+              {whatsAppInfo.nama}
             </CNavLink>
           </CNavItem>
           {/* <CNavItem>
@@ -49,8 +50,9 @@ const AppHeader = () => {
         </CHeaderNav>
         <CHeaderNav>
           <CNavItem>
-            <CNavLink href="#">
-              <CIcon icon={cilBell} size="lg" />
+            <CNavLink href="#" >
+              <CIcon icon={cilDollar} size="lg" />
+              {whatsAppInfo.saldoTopup}
             </CNavLink>
           </CNavItem>
           <CNavItem>
