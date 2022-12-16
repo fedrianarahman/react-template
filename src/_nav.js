@@ -32,7 +32,7 @@ const _nav = [
   {
     component: CNavItem,
     name: 'Wa Blaste',
-    to: '/dashboard',
+    to: '/wablaste',
     icon: <CIcon icon={cilAudio} customClassName="nav-icon" />,
     badge: {
       color: 'info',

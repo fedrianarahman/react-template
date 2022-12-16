@@ -58,11 +58,13 @@ const Select = () => {
                 <CInputGroupText id="basic-addon3">https://example.com/users/</CInputGroupText>
                 <CFormInput id="basic-url" aria-describedby="basic-addon3" />
               </CInputGroup>
-              <CInputGroup className="mb-3">
+              <div className='col-md-4'>
+              <CInputGroup className="mb-3 col-md-">
                 <CInputGroupText>$</CInputGroupText>
                 <CFormInput aria-label="Amount (to the nearest dollar)" />
                 <CInputGroupText>.00</CInputGroupText>
               </CInputGroup>
+              </div>
               <CInputGroup className="mb-3">
                 <CFormInput placeholder="Username" aria-label="Username" />
                 <CInputGroupText>@</CInputGroupText>

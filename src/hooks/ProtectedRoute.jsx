@@ -12,7 +12,7 @@ const ProtectedRoute = ({children}) => {
     
     const dispatch = useDispatch()
     
-    console.log("line 12", token);
+    // console.log("line 12", token);
     const [data, setdata] = useState({
         nomorWa : '',
         namaSekolah : '',
@@ -28,7 +28,7 @@ const ProtectedRoute = ({children}) => {
     const fecthData = async ()=>{
         const tokenData = jwtDecode(token)  
         const response  = await ApiService.post(`/wa/get-user-wa`, {id : tokenData.id});
-        console.log('line 30 PR', response.data)
+        // console.log('line 30 PR', response.data)
         dispatch({type : 'set', whatsAppInfo: response.data.data})
     }
 

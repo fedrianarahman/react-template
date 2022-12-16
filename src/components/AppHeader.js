@@ -12,7 +12,8 @@ import {
   CNavItem,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import { cilBell, cilEnvelopeOpen, cilList, cilMenu, cilDollar } from '@coreui/icons'
+import { cilBell, cilEnvelopeOpen, cilList, cilMenu, cilDollar, cilLoopCircular } from '@coreui/icons'
+import CurrencyInput from 'react-currency-input-field';
 
 import { AppBreadcrumb } from './index'
 import { AppHeaderDropdown } from './header/index'
@@ -49,13 +50,15 @@ const AppHeader = () => {
           </CNavItem> */}
         </CHeaderNav>
         <CHeaderNav>
-          <CNavItem>
+          <CNavItem >
             <CNavLink href="#" >
-              <CIcon icon={cilDollar} size="lg" />
-              {whatsAppInfo.saldoTopup}
+              {/* <CIcon icon={cilDollar} size="lg" style={{color : "green"}}/> */}
+              Saldo :  
+              <span style={{ fontSize : "16px"}}> Rp.{whatsAppInfo.saldoTopup}.00</span>
+              <CIcon icon={cilLoopCircular} style={{marginLeft : "7px", color : "black"}}/>
             </CNavLink>
           </CNavItem>
-          <CNavItem>
+          {/* <CNavItem>
             <CNavLink href="#">
               <CIcon icon={cilList} size="lg" />
             </CNavLink>
@@ -64,7 +67,7 @@ const AppHeader = () => {
             <CNavLink href="#">
               <CIcon icon={cilEnvelopeOpen} size="lg" />
             </CNavLink>
-          </CNavItem>
+          </CNavItem> */}
         </CHeaderNav>
         <CHeaderNav className="ms-3">
           <AppHeaderDropdown />
