@@ -5,6 +5,7 @@ const initialState = {
   sidebarShow: true,
   token : window.localStorage.getItem("token"),
   whatsAppInfo : {},
+  statusLogin : {},
   
 }
 
@@ -17,6 +18,6 @@ const changeState = (state = initialState, { type, ...rest }) => {
   }
 }
 
-console.log("line 19 whatsApp info", initialState.token)
+console.log("line 19 whatsApp info", initialState.statusLogin)
 const store = createStore(changeState)
 export default store

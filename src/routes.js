@@ -2,6 +2,7 @@ import React from 'react'
 import ProtectedRoute from './hooks/ProtectedRoute'
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
 const WaBlaste = React.lazy(()=>import('./views/dashboard/WaBlaste'))
+const Setup = React.lazy(()=>import('./views/dashboard/Setup'))
 const Colors = React.lazy(() => import('./views/theme/colors/Colors'))
 const Typography = React.lazy(() => import('./views/theme/typography/Typography'))
 
@@ -55,6 +56,7 @@ const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', element: Dashboard },
   { path: '/wablaste', name: 'WaBlaste', element: WaBlaste },
+  { path: '/setup', name: 'Setup', element: Setup },
   { path: '/theme', name: 'Theme', element: Colors, exact: true },
   { path: '/theme/colors', name: 'Colors', element: Colors },
   { path: '/theme/typography', name: 'Typography', element: Typography },

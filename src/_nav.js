@@ -42,7 +42,7 @@ const _nav = [
   {
     component: CNavItem,
     name: 'Set up',
-    to: '/dashboard',
+    to: '/setup',
     icon: <CIcon icon={cilSettings} customClassName="nav-icon" />,
     badge: {
       color: 'info',

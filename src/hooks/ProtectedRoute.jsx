@@ -28,8 +28,11 @@ const ProtectedRoute = ({children}) => {
     const fecthData = async ()=>{
         const tokenData = jwtDecode(token)  
         const response  = await ApiService.post(`/wa/get-user-wa`, {id : tokenData.id});
+        // const response1 = await ApiService.post(`/wa/get-state-server`, {id : tokenData.id});
         // console.log('line 30 PR', response.data)
-        dispatch({type : 'set', whatsAppInfo: response.data.data})
+        dispatch({type : 'set', whatsAppInfo: response.data.data});
+        // dispatch({type : "set", statusLogin : response1.status});
+        // console.log("line 35", response1.status); 
     }
 
     useEffect(()=>{

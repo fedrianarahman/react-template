@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import {
@@ -10,20 +10,39 @@ import {
   CHeaderToggler,
   CNavLink,
   CNavItem,
+  CBadge,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import { cilBell, cilEnvelopeOpen, cilList, cilMenu, cilDollar, cilLoopCircular } from '@coreui/icons'
-import CurrencyInput from 'react-currency-input-field';
-
+import { cilBell, cilEnvelopeOpen, cilList, cilMenu, cilDollar, cilLoopCircular, cilPhone } from '@coreui/icons'
 import { AppBreadcrumb } from './index'
 import { AppHeaderDropdown } from './header/index'
-// import { logo } from 'src/assets/brand/logo'
-import { logo } from '../assets/brand/logo'
+import { IoCallSharp } from "react-icons/io5";
+import { logo } from '../assets/brand/logo';
+import { ApiService } from '../ApiService/ApiService'
+import jwtDecode from 'jwt-decode';
+
 const AppHeader = () => {
   const dispatch = useDispatch()
   const sidebarShow = useSelector((state) => state.sidebarShow)
   const whatsAppInfo = useSelector((state) => state.whatsAppInfo)
-  // console.log("line 25 apppp header", whatsAppInfo);
+  const token = jwtDecode(useSelector((state=> state.token)));
+
+  const [params, setParams] = useState({
+    background : "",
+    status : "",
+  });
+
+  useEffect(()=>{
+    fetchData()
+  }, []);
+
+  const fetchData = async () =>{
+      const response1 = await ApiService.post(`/wa/get-state-server`, {id : token.id});
+      console.log("line 41", response1.config);
+  }
+ 
+
+  // console.log("line 28 token : ", token);
   return (
     <CHeader position="sticky" className="mb-4">
       <CContainer fluid>
@@ -58,12 +77,13 @@ const AppHeader = () => {
               <CIcon icon={cilLoopCircular} style={{marginLeft : "7px", color : "black"}}/>
             </CNavLink>
           </CNavItem>
-          {/* <CNavItem>
+          <CNavItem className='ml-4'>
             <CNavLink href="#">
-              <CIcon icon={cilList} size="lg" />
+              Status : 
+              <IoCallSharp style={{ marginLeft:"12px", background : "green", padding:"3px", color:"white", borderRadius : "50%"}} size={20}/>
             </CNavLink>
           </CNavItem>
-          <CNavItem>
+          {/* <CNavItem>
             <CNavLink href="#">
               <CIcon icon={cilEnvelopeOpen} size="lg" />
             </CNavLink>
