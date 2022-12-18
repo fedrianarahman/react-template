@@ -18,6 +18,6 @@ const changeState = (state = initialState, { type, ...rest }) => {
   }
 }
 
-console.log("line 19 whatsApp info", initialState.statusLogin)
+console.log("line 19 whatsApp info", initialState.token)
 const store = createStore(changeState)
 export default store
