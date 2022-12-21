@@ -32,14 +32,14 @@ const AppHeader = () => {
     status : "",
   });
 
-  useEffect(()=>{
-    fetchData()
-  }, []);
+  // useEffect(()=>{
+  //   fetchData()
+  // }, []);
 
-  const fetchData = async () =>{
-      const response1 = await ApiService.post(`/wa/get-state-server`, {id : token.id});
-      console.log("line 41", response1.config);
-  }
+  // const fetchData = async () =>{
+  //     const response1 = await ApiService.post(`/wa/get-state-server`, {id : token.id});
+  //     console.log("line 41", response1.config);
+  // }
  
 
   // console.log("line 28 token : ", token);

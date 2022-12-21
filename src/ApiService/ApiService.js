@@ -3,21 +3,30 @@ import axios from "axios";
 let config = require("./config.json");
 
  export const ApiService = {
-
-    get: (url, param)=>{
-        return axios.get
+    
+    get: (url, params, configLocal)=>{
+        const getToken = configLocal ? configLocal.token || sessionStorage.getItem("tokenSS") : sessionStorage.getItem("tokenSS");
+        // console.log("line 9", getToken);
+        const localConfigAxios = {
+            headers : {
+                'Authorization': `Bearer ${getToken}`,
+            },
+            params,
+            ...configLocal
+        }
+        return axios.get(config.host + url,localConfigAxios )
     },
 
     post : (url, params, configLocal) =>{
-        const getToken = localStorage.getItem("token");
-        const localConfigAcios = {
+        const getToken = configLocal ? configLocal.token || localStorage.getItem("token") : localStorage.getItem("token");
+        const localConfigAxios = {
             headers : {
                 'Authorization': `Bearer ${getToken}`,
             },
             ...configLocal
         }
 
-        return axios.post(config.host + url, params, localConfigAcios)
+        return axios.post(config.host + url, params, localConfigAxios)
     }
 
     
