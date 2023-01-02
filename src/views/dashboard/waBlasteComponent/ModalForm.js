@@ -4,30 +4,38 @@ const ModalForm = ({ show, onHide, modalTitle, }) => {
 
     const [inputText, setInputTex] = useState({
         input : "",
-        
+        output : "",
     })
 
     const handleChange = (event)=>{
         let name = event.target.name;
         let value = event.target.value;
-        setInputTex({...inputText, [name] : value});
+        
+        let text = value;
+        dataArray.map(row => {
+            ///{namaSisa}/
+            let regex = new RegExp(row.label,'g')
+            text = text.replace(regex,row.value);
+            console.log("line",text)
+        })
+    
+
+        setInputTex({...inputText, [name] : value, output : text});
     }
 
-    // console.log("line 16", inputText.input);
+    let dataArray = [{
+        label : "{namasiswa}",
+        value : "Dede Rahmat"
+    },{
+        label : "{tagihan}",
+        value : `⏺    20.000 SPP Oktober 2022
+⏺    20.000 SPP November 2022
+TOTAL TAGIHAH 40.000
+                `
+    }]
 
-    // let string = "/* ANIMATION START */ new string should be added here /* ANIMATION END */";
-    let string = "";
-    string = "_"+ inputText.input+"_"
-    let regex = /(\/\*[\w\s]+\*\/)([\w\s]+)(\/\*[\w\s]+\*\/)/g; 
-    regex = /(_)([\w\s]+)(_)/i
-    string = string.replace(regex, "<b>$2</b>");
-    // console.log("line 23",string);
-    // console.log("%c" + "Line 24 !", "color: #7289DA; -webkit-text-stroke: 2px black; font-size: 72px; font-weight: bold;");
-    // console.log("%c" +  inputText.input, "color: #7289DA; -webkit-text-stroke: 2px black; font-size: 72px; font-weight: bold;");
-    // var string = "assslamu'alaikum {namaSiswa} {namaSiswa}";
-    // regex = /{namaSiswa}/g
-    // string = string.replace(regex, "Rahman Fedriana");
-    // console.log("line 28",string);
+    const listFormat = dataArray.map((data)=> data.label).join('\n')
+    
 
     return (
         <Modal size="lg"
@@ -47,13 +55,13 @@ const ModalForm = ({ show, onHide, modalTitle, }) => {
                         </Form.Group>
                         <Form.Group className='col col-md-4'>
                             <Form.Label>Data</Form.Label>
-                            <Form.Control as="textarea" defaultValue={"${namaSiswa}\n${tagihan}"}
+                            <Form.Control as="textarea" defaultValue={listFormat}
                                         style={{ height: '100px', fontSize: '12px' }}
                                         required readOnly/>
                         </Form.Group>
                         <Form.Group className='col col-md-12'>
                             <Form.Label>Output</Form.Label>
-                            <Form.Control as="textarea" defaultValue={inputText.input} placeholder="Leave a comment here"
+                            <Form.Control as="textarea" defaultValue={inputText.output} placeholder="Leave a comment here"
                                         style={{ height: '100px', fontSize: '12px' }}
                                         required readOnly/>
                         </Form.Group>

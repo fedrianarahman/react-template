@@ -19,7 +19,7 @@ import CIcon from '@coreui/icons-react'
 
 import avatar8 from './../../assets/images/avatars/8.jpg'
 import { AuthContext } from '../../hooks/AuthProvider';
-import ModalProfile from './ModalProfile'
+import ModalProfile from './ModalTopUp'
 import { useSelector } from 'react-redux'
 
 const AppHeaderDropdown = () => {

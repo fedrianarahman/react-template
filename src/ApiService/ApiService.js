@@ -27,6 +27,19 @@ let config = require("./config.json");
         }
 
         return axios.post(config.host + url, params, localConfigAxios)
+    },
+
+    postSS : (url, params, configLocal)=>{
+        const getToken = configLocal ? configLocal.token || sessionStorage.getItem("tokenSS") : sessionStorage.getItem("tokenSS");
+        // console.log("line 9", getToken);
+        const localConfigAxios = {
+            headers : {
+                'Authorization': `Bearer ${getToken}`,
+            },
+            // params,
+            ...configLocal
+        }
+        return axios.post(config.host + url,params, localConfigAxios )
     }
 
     
