@@ -41,17 +41,6 @@ const AppHeader = () => {
   const handleClose = () =>{
     setParams({...params, show : false})
   }
-  // useEffect(()=>{
-  //   fetchData()
-  // }, []);
-
-  // const fetchData = async () =>{
-  //     const response1 = await ApiService.post(`/wa/get-state-server`, {id : token.id});
-  //     console.log("line 41", response1.config);
-  // }
-
-
-  // console.log("line 28 token : ", token);
   return (
     <>
       <div>{(params.show) ? <div><ModalTopUp show={params.show} onHide={handleClose} modalTitle={params.modalTitle} textBtn={params.modalButton}   noWhatsApp={whatsAppInfo.whatsappNumber}/></div> : ''}</div>
@@ -73,12 +62,6 @@ const AppHeader = () => {
                 {whatsAppInfo.nama}
               </CNavLink>
             </CNavItem>
-            {/* <CNavItem>
-            <CNavLink href="#">Users</CNavLink>
-          </CNavItem> */}
-            {/* <CNavItem>
-            <CNavLink href="#">Settings</CNavLink>
-          </CNavItem> */}
           </CHeaderNav>
           <CHeaderNav>
             <CNavItem >
