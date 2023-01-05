@@ -32,19 +32,42 @@ const AppHeader = () => {
     show : false,
     modalTitle : "Top Up Saldo",
     textBtn : "cek",
-
+    nominal : "300,000",
+    nomorWa : whatsAppInfo.whatsappNumber,
+    uid_Sekolah : 25,
   });
 
+  const [modalIframe, setModalIframe] = useState({
+    show : false,
+  })
   const handleClick = () => {
     setParams({...params, show  : true})
   }
   const handleClose = () =>{
     setParams({...params, show : false})
   }
+  const handleSubmit = () =>{
+    // event.preventDefault();
+    handleClose()
+    const param = [
+      "key=abahKadabra",
+      `nominal=${params.nominal}`,
+      'keterangan=TopUp Saldo',
+      `nomor=${whatsAppInfo.whatsappNumber}`,
+      `uid_sekolah=${params.uid_Sekolah}`]
+      const url = `https://siswa.smartsystem.co.id/#/paymentv2?`+param.join('&');
+      // console.log("line 59", url);
+      // setParams({...params,show : true});
+      setModalIframe({...modalIframe, show : true});
+      
+}
+  const handleCloseIframe = () =>{
+    setModalIframe({...modalIframe, show : false});
+  }
   return (
     <>
-      <div>{(params.show) ? <div><ModalTopUp show={params.show} onHide={handleClose} modalTitle={params.modalTitle} textBtn={params.modalButton}   noWhatsApp={whatsAppInfo.whatsappNumber}/></div> : ''}</div>
-      {/* <div>{(params.show) ? <div><ModalIframe show={params.show} onHide={handleClose} /></div> : ''}</div> */}
+      <div>{(params.show) ? <div><ModalTopUp show={params.show} onHide={handleClose} modalTitle={params.modalTitle} textBtn={params.modalButton} handleSubmit={handleSubmit}   noWhatsApp={whatsAppInfo.whatsappNumber} nominal={300000} nomorWa={whatsAppInfo.whatsappNumber}/></div> : ''}</div>
+      <div>{(modalIframe.show) ? <div><ModalIframe show={modalIframe.show} onHide={handleCloseIframe} /></div> : ''}</div>
       <CHeader position="sticky" className="mb-4">
         <CContainer fluid>
           <CHeaderToggler
