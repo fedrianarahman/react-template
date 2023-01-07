@@ -85,7 +85,11 @@ const WaBlaste = () => {
       limit: 1000,
       sort: "tahun_ajaran desc",
     }
-    const getDataTahunAjaran = await ApiService.get('/tahunajaran', Localparams, tokenData.user.uid_sekolah);
+    let url = "/tahunajaran"
+    let params = Localparams;
+    let configLocal = {token : tokenSS}
+    console.log("line 91", configLocal);
+    const getDataTahunAjaran = await ApiService.get(url, params, configLocal);
 
     setTahunAjaran(getDataTahunAjaran.data.data)
   }
@@ -98,7 +102,9 @@ const WaBlaste = () => {
       sort: "nama_kelas asc",
       uid_sekolah: tokenData.id,
     }
-    const getDataKelas = await ApiService.get(`/kelas`, Localparams, tokenData.id);
+
+    const configLocal = {token : tokenSS}
+    const getDataKelas = await ApiService.get(`/kelas`, Localparams, configLocal );
     setDataKelas(getDataKelas.data.data);
   }
 

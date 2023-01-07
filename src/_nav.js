@@ -49,16 +49,16 @@ const _nav = [
       // text: 'NEW',
     },
   },
-  {
-    component: CNavItem,
-    name: 'Cek top up',
-    to: '/topUpSaldo',
-    icon: <CIcon icon={cilSettings} customClassName="nav-icon" />,
-    badge: {
-      color: 'info',
-      // text: 'NEW',
-    },
-  },
+  // {
+  //   component: CNavItem,
+  //   name: 'Cek top up',
+  //   to: '/topUpSaldo',
+  //   icon: <CIcon icon={cilSettings} customClassName="nav-icon" />,
+  //   badge: {
+  //     color: 'info',
+  //     // text: 'NEW',
+  //   },
+  // },
   // {
   //   component: CNavTitle,
   //   name: 'Theme',

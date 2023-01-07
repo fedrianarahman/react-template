@@ -21,7 +21,8 @@ import { IoCallSharp } from "react-icons/io5";
 import { logo } from '../assets/brand/logo';
 import jwtDecode from 'jwt-decode';
 import ModalTopUp from './header/ModalTopUp';
-import ModalIframe from './header/ModalIframe'
+import ModalIframe from './header/ModalIframe';
+import TopUpSaldo from '../views/dashboard/TopUpSaldo'
 const AppHeader = () => {
   const dispatch = useDispatch()
   const sidebarShow = useSelector((state) => state.sidebarShow)
@@ -32,13 +33,14 @@ const AppHeader = () => {
     show : false,
     modalTitle : "Top Up Saldo",
     textBtn : "cek",
-    nominal : "300,000",
+    nominal : "300000",
     nomorWa : whatsAppInfo.whatsappNumber,
     uid_Sekolah : 25,
+    data : {}
   });
 
   const [modalIframe, setModalIframe] = useState({
-    show : false,
+    visible : false,
   })
   const handleClick = () => {
     setParams({...params, show  : true})
@@ -46,28 +48,20 @@ const AppHeader = () => {
   const handleClose = () =>{
     setParams({...params, show : false})
   }
-  const handleSubmit = () =>{
+  const handleSubmit = (url) =>{
     // event.preventDefault();
+    setModalIframe({...modalIframe, visible : true, url : url});
     handleClose()
-    const param = [
-      "key=abahKadabra",
-      `nominal=${params.nominal}`,
-      'keterangan=TopUp Saldo',
-      `nomor=${whatsAppInfo.whatsappNumber}`,
-      `uid_sekolah=${params.uid_Sekolah}`]
-      const url = `https://siswa.smartsystem.co.id/#/paymentv2?`+param.join('&');
-      // console.log("line 59", url);
-      // setParams({...params,show : true});
-      setModalIframe({...modalIframe, show : true});
-      
+      // console.log("line 63", param);
 }
   const handleCloseIframe = () =>{
-    setModalIframe({...modalIframe, show : false});
+    setModalIframe({...modalIframe, visible : false});
   }
   return (
     <>
-      <div>{(params.show) ? <div><ModalTopUp show={params.show} onHide={handleClose} modalTitle={params.modalTitle} textBtn={params.modalButton} handleSubmit={handleSubmit}   noWhatsApp={whatsAppInfo.whatsappNumber} nominal={300000} nomorWa={whatsAppInfo.whatsappNumber}/></div> : ''}</div>
-      <div>{(modalIframe.show) ? <div><ModalIframe show={modalIframe.show} onHide={handleCloseIframe} /></div> : ''}</div>
+      <div>{(params.show) ? <div><ModalTopUp show={params.show} onHide={handleClose} modalTitle={params.modalTitle} textBtn={params.modalButton} handleSubmit={handleSubmit}  noWhatsApp={whatsAppInfo.whatsappNumber} data={params.data}/></div> : ''}</div>
+      <div>{(modalIframe.visible) ? <div><ModalIframe visible={modalIframe.visible} cbClose={handleCloseIframe} url={modalIframe.url}/></div> : ''}</div>
+      {/* <TopUpSaldo handleSubmit={handleSubmit}/> */}
       <CHeader position="sticky" className="mb-4">
         <CContainer fluid>
           <CHeaderToggler

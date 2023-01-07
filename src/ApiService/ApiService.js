@@ -5,7 +5,7 @@ let config = require("./config.json");
  export const ApiService = {
     
     get: (url, params, configLocal)=>{
-        const getToken = configLocal ? configLocal.token || sessionStorage.getItem("tokenSS") : sessionStorage.getItem("tokenSS");
+        const getToken = configLocal ? configLocal.token || localStorage.getItem("token") : localStorage.getItem("token");
         // console.log("line 9", getToken);
         const localConfigAxios = {
             headers : {
